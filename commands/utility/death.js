@@ -20,7 +20,7 @@ module.exports = {
 		const offender = interaction.options.getUser("criminal");
 		const reason =
 			interaction.options.getString("reason") ?? "No reason provided";
-		const executer = interaction.user;
+		const executer = interaction.member;
 		if (
 			!executer.roles.cache.has(1239071556576088094) ||
 			executer.roles.cache.has(1193792031751934002) ||
