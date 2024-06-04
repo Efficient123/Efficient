@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('death sentence')
+		.setName('death_sentence')
 		.setDescription('sentences a user to death\(ban\)')
 	  .addUserOption((option) =>
 			option
@@ -21,9 +21,9 @@ module.exports = {
 		const reason = i.options.getString("reason") ?? "No reason provided";
     const executer = i.member;
 		if (!executer.roles.cache.has("1193792031751934002") || executer.roles.cache.has("1193771724886511707") || executer.roles.cache.has("1239071556576088094") || executer.roles.cache.has("1193509108364623882")) {
-			await i.reply({ content: "You do not have permission to use this command.", ephemeral: true });
+			await i.reply("You do not have permission to use this command.");
 		} else {
-			await i.reply({ content: `Sentenced ${offender} to death for ${reason}`, ephemeral: false }).catch(console.error());
+			await i.reply(`Sentenced ${offender} to death for ${reason}`);
 			try {
 				offender.send(`You have been sentenced to death for ${reason}`);
 			} catch(e) {
@@ -32,4 +32,4 @@ module.exports = {
 			await i.guild.members.ban(offender, { reason: reason });
 		}
 	},
-}
+};
