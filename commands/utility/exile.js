@@ -21,10 +21,15 @@ module.exports = {
 		const outlaw = i.options.getUser("outlaw");
 		const sentence = i.options.getString("sentence") ?? "No reason provided";
 		const enforcer = i.member;
+		const execuse = ["Efficient's anti moderation sheild was too hard to penetrate", "Efficient, look someone is trying to exile you, your majesty 🙏", "I will exile you instead", "Uno", "They are too important, unlike you."]
 
 		if (!(enforcer.roles.cache.has("1193792031751934002") || enforcer.roles.cache.has("1193771724886511707") || enforcer.roles.cache.has("1239071556576088094") || enforcer.roles.cache.has("1193509108364623882"))) {
 			await i.reply("You do not have permission to use this command.");
-		} else {
+		} else if(offender.roles.cache.has("1241383081617915925") || offender.roles.cache.has("1193834032023216168")){
+			await interaction.reply("I cannot exile them.")
+		} else if (offender.roles.cache.has("1193509108364623882")) {
+			await i.reply(`${execuse[Math.floor(Math.random() * execuse.length)]}`)
+		}else {
 			// Send informative message to the channel where the command was run
 			await i.reply(`Exiled ${outlaw} to ${destinations[Math.floor(Math.random() * destinations.length)]}!`); // Use destinations.length for the max index
 
