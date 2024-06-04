@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('Banish')
+		.setName('banish')
 		.setDescription('Banishes a user (kick)')
 		.addUserOption((option) =>
 			option
