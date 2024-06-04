@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('death sentence')
+		.setName('death_sentence')
 		.setDescription('sentences a user to death\(ban\)')
 	  .addUserOption((option) =>
 			option
