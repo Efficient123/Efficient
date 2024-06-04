@@ -34,7 +34,7 @@ module.exports = {
 			} catch (error) {
 				console.error("Failed to send DM:", error);
 				// You can also send a message in the channel indicating DM failure
-				await interaction.reply(`Banishment successful! However, I couldn't send a direct message to ${banishedUser}.`);
+				await interaction.followUp(`Banishment successful! However, I couldn't send a direct message to ${banishedUser}.`);
 			}
 
 		}
