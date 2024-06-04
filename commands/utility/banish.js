@@ -25,9 +25,9 @@ module.exports = {
 		
 		if (!(executor.roles.cache.has("1193792031751934002") || executor.roles.cache.has("1193771724886511707") || executor.roles.cache.has("1239071556576088094") || executor.roles.cache.has("1193509108364623882"))) {
 			await interaction.reply("You do not have permission to use this command.");
-		} else if(offender.roles.cache.has("1241383081617915925") || offender.roles.cache.has("1193834032023216168")){
+		} else if(banishedUser.roles.cache.has("1241383081617915925") || banishedUser.roles.cache.has("1193834032023216168")){
 			await interaction.reply("I cannot banish them.")
-		} else if (offender.roles.cache.has("1193509108364623882")) {
+		} else if (banishedUser.roles.cache.has("1193509108364623882")) {
 			await i.reply(`${execuse[Math.floor(Math.random() * execuse.length)]}`)
 		} else {
 			// Send informative message to the channel where the command was run
