@@ -6,6 +6,7 @@ const { token, guildId } = require('./config.json');
 const client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers
 	],
 });
 
@@ -26,11 +27,30 @@ for (const folder of commandFolders) {
 		}
 	}
 }
+client.on('guildMemberAdd', member => {
+    const punishFilePath = path.join(__dirname, 'commands/utility/punish.json');
+    fs.readFile(punishFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading punish.json:', err);
+            return;
+        }
 
+        const punishments = JSON.parse(data);
+        const jailedRole = member.guild.roles.cache.find(role => role.id === '1243049250447949905');
+
+        punishments.forEach(punishment => {
+            if (punishment.id === member.id) {
+                member.roles.add(jailedRole).catch(err => {
+                    console.error(`Failed to add jailed role to ${member.user.tag}:`, err);
+                });
+            }
+        });
+    });
+});
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 	checkPunishments();
-	setInterval(checkPunishments, 50 * 1000); // Check every 5 minutes
+	setInterval(checkPunishments, 1000); // Check every 5 minutes
 });
 
 client.on(Events.InteractionCreate, async interaction => {
